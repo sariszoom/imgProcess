@@ -24,8 +24,14 @@ image = cv.imread('class7/img/catonnote.jpg', cv.IMREAD_GRAYSCALE)
 # ใช้ Sobel Filter แบบ Horizontal และ Vertical กับภาพ
 filtered_horizontal, filtered_vertical = sobel_filter(image)
 
+# ทำ Fourier Transform
+fft_image = np.fft.fft2(image)
+# fft_shifted = np.fft.fftshift(fft_image)
+
 # แสดงผลลัพธ์
-cv.imwrite('class7/classwork4/sobelx.png', filtered_horizontal)
-cv.imwrite('class7/classwork4/sobely.png',filtered_vertical)
+cv.imwrite('class7/classwork4/sobelx.png', filtered_vertical)
+cv.imwrite('class7/classwork4/sobely.png',filtered_horizontal)
+cv.imwrite('class7/classwork4/fft2.png',image)
+# cv.imwrite('class7/classwork4/fftshift.png',fft_shifted)
 cv.waitKey(0)
 cv.destroyAllWindows()
