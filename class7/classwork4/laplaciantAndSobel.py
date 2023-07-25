@@ -21,9 +21,9 @@ if __name__ == '__main__': # 1. นำเข้าไลบรารี OpenCV �
     h, w = img.shape 
     
     # Sobel kernel แบบ Vertical
-    sobel_vertical = np.array([[-1, 0, 1],
-                               [-2, 0, 2],
-                               [-1, 0, 1]])
+    sobel_vertical = np.array([[1, 0, -1],
+                               [2, 0, -2],
+                               [1, 0, -1]])
     
     kernel_length = len(sobel_vertical) #3
     
