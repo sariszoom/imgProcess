@@ -56,14 +56,14 @@ for i in range (1,19,2):
   #Add midblur for check (test)
   img = cv.medianBlur(img,i)
   compare = compute_ssim(imgOrigin,img)
-  print(compare)
+  print(compare*100)
   
   #ดูค่า SSIM มากที่สุด
   if compare > maxSSIM:
     maxSSIM = compare
     blur = i
     
-    print("Max SSIM : ", maxSSIM," Blur :", blur )
+    print("Max SSIM : ", maxSSIM*100," Blur :", blur )
   
 #Real midblur  
 output = cv.medianBlur(output,blur)
