@@ -2,16 +2,30 @@ import numpy as np
 import cv2 as cv
 
 #create empty
-img = np.zeros([400,500],dtype = np.uint8)
+filter = np.zeros([500,500],dtype = np.uint8)
 
-p1 = (100,10)
-p2 = (10,100)
+ceta = int(45)
+radius = int(200)
 
-cv.circle(img, p1, 1, 255, -1) 
-cv.circle(img, p2, 1, 255, -1) 
+img = cv.imread("pug.jpg",cv.IMREAD_GRAYSCALE)
 
+#สร้างเส้นตรง
+for i in range (radius):
+  x = int (i*np.cos(ceta))
+  y = int (i*np.sin(ceta))
+  filter[y,x] = 255
+
+kernel = filter/np.sum(filter)
+
+# print(filter)
+# print(kernel)
+
+
+conFilter = cv.filter2D(img,-1,kernel,borderType = cv.BORDER_REFLECT)
 
 # display image
-cv.imshow('Draw Line', img)
+cv.imwrite('Draw Line.png', filter)
+cv.imwrite('Convolution.png',conFilter)
+cv.imshow('ConvolutionImg',conFilter)
 cv.waitKey(0)
 cv.destroyAllWindows()
