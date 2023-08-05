@@ -52,6 +52,7 @@ for i in range(number_of_black_pixel):
 output = img
 maxSSIM = 0
 blur = 1  #ต้องเป็นเลขแรก(คี่)
+
 for i in range (1,19,2):
   #Add midblur for check (test)
   img = cv.medianBlur(img,i)
@@ -68,8 +69,8 @@ for i in range (1,19,2):
 #Real midblur  
 output = cv.medianBlur(output,blur)
     
-cv.imshow('image_with_sp', output)
-cv.imwrite('image_with_sp.png', output)
+cv.imshow('image_without_sp', output)
+cv.imwrite('image_without_sp.png', output)
 cv.waitKey(0)
 cv.destroyAllWindows()
 
